@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Analyzer</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="two-column">
+    <section class="left-panel">
+      <div class="header-row">
+        <h1>Tech Analyzer</h1>
+        <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="toggle-icon light">☀️</span>
+          <span class="toggle-icon dark">🌙</span>
+        </button>
+      </div>
+      <form id="analyze-form">
+        <fieldset>
+          <legend>Select checks:</legend>
+          <label>
+            <input type="checkbox" name="js-frameworks" checked />
+            Detect JS Frameworks
+          </label>
+          <label>
+            <input type="checkbox" name="css-frameworks" checked />
+            Detect CSS Frameworks
+          </label>
+          <label>
+            <input type="checkbox" name="list-js" />
+            List all JavaScript files
+          </label>
+          <label>
+            <input type="checkbox" name="list-css" />
+            List all CSS files
+          </label>
+        </fieldset>
+        <button type="submit" id="run-btn">Run Analysis</button>
+      </form>
+    </section>
+    <div class="divider"></div>
+    <section class="right-panel">
+      <div class="results-header">
+        <h2>Results</h2>
+        <button id="copy-ai-prompt" class="icon-button" aria-label="Copy as AI prompt" title="Copy as AI prompt" disabled>
+          <span class="button-icon">📋</span>
+          <span class="button-text">Copy for AI</span>
+        </button>
+      </div>
+      <div id="toast" class="toast" aria-live="polite" aria-hidden="true">Copied to clipboard!</div>
+      <section id="report" aria-live="polite"></section>
+    </section>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
