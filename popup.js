@@ -147,7 +147,7 @@
     // Framework detection patterns
     const JS_FRAMEWORKS = [
       { name: 'React', patterns: ['React', '__REACT_DEVTOOLS_GLOBAL_HOOK__', 'react.js', 'react.min.js', 'react-dom'] },
-      { name: 'AngularJS', patterns: ['angular', 'ng', 'angular.js', 'angular.min.js'] },
+      { name: 'AngularJS', patterns: ['ngApp', 'angular.module', 'angular.js', 'angular.min.js', 'ng-app', 'ng-controller'] },
       { name: 'Vue.js', patterns: ['Vue', 'vue.js', 'vue.min.js'] },
       { name: 'Svelte', patterns: ['Svelte', 'svelte'] }
     ];
