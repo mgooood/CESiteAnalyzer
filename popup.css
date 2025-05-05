@@ -1,7 +1,14 @@
+/* Tech Analyzer Chrome Extension - Style Sheet
+ * Mobile-first design with light/dark theme support
+ */
+
+/* Core theme variables */
 :root {
+  /* Core theme variables for light mode */
   --primary-bg: #fff;
   --primary-fg: #222;
   --accent: #0077cc;
+  --accent-rgb: 0, 119, 204; /* RGB values for accent color */
   --border-radius: 8px;
   --font-size: 16px;
   --spacing: 1rem;
@@ -9,16 +16,19 @@
   --divider: #e0e4ea;
 }
 
-/* Dark theme variables */
+/* Dark theme override variables */
 .dark-theme {
   --primary-bg: #181c20;
   --primary-fg: #f2f2f2;
   --accent: #2b90d9;
+  --accent-rgb: 43, 144, 217; /* RGB values for dark theme accent */
   --panel-bg: #23272e;
   --divider: #353a40;
 }
 
+/* Base layout and typography */
 body {
+  /* Base typography and layout */
   background: var(--primary-bg);
   color: var(--primary-fg);
   font-family: system-ui, sans-serif;
@@ -30,6 +40,7 @@ body {
   width: 700px;
 }
 
+/* Main two-column layout container */
 main.two-column {
   display: flex;
   flex-direction: row;
@@ -43,6 +54,7 @@ main.two-column {
   background: var(--primary-bg);
 }
 
+/* Header with title and theme toggle */
 .header-row {
   display: flex;
   justify-content: space-between;
@@ -50,6 +62,7 @@ main.two-column {
   margin-bottom: var(--spacing);
 }
 
+/* Theme toggle button styling */
 #theme-toggle {
   background: transparent;
   border: 1px solid var(--divider);
@@ -73,6 +86,7 @@ main.two-column {
   background-color: rgba(255,255,255,0.1);
 }
 
+/* Theme toggle icon animation */
 .toggle-icon {
   position: absolute;
   transition: transform 0.3s ease;
@@ -95,6 +109,7 @@ main.two-column {
   transform: translateY(0);
 }
 
+/* Left panel with form controls */
 .left-panel {
   flex: 1 1 45%;
   padding: var(--spacing);
@@ -102,18 +117,21 @@ main.two-column {
   flex-direction: column;
   gap: var(--spacing);
   color: var(--primary-fg);
+  position: relative;
 }
 
+/* Right panel with results display */
 .right-panel {
   flex: 1 1 55%;
   padding: var(--spacing);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
   background: var(--panel-bg);
   min-height: 100%;
-  overflow-y: auto;
+  overflow-y: auto; /* Enable scrolling for long results */
   max-height: 400px;
 }
 
+/* Vertical divider between panels */
 .divider {
   width: 2px;
   background: var(--divider);
@@ -121,6 +139,7 @@ main.two-column {
   align-self: stretch;
 }
 
+/* Typography elements */
 h1 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -133,6 +152,7 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+/* Form elements */
 fieldset {
   border: 1px solid var(--accent);
   border-radius: var(--border-radius);
@@ -158,13 +178,15 @@ button:hover, button:focus {
   background: #3a9ede;
 }
 
+/* Results display area */
 #report {
   margin-top: var(--spacing);
   font-size: 0.95em;
-  word-break: break-word;
+  word-break: break-word; /* Prevent long strings from breaking layout */
   color: var(--primary-fg);
 }
 
+/* Form controls */
 label {
   display: block;
   margin-bottom: 0.5em;
@@ -175,46 +197,6 @@ label {
   color: var(--primary-fg);
 }
 
-/* Framework results styling */
-.framework-results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.framework-item {
-  background-color: var(--accent);
-  color: white;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.9em;
-  display: inline-block;
-}
-
-.dark-theme .framework-item {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
-.result-group {
-  margin-bottom: 16px;
-}
-
-.result-group strong {
-  font-weight: 600;
-  font-size: 1.05em;
-}
-
-.result-group ul {
-  margin-top: 4px;
-  margin-bottom: 0;
-  padding-left: 24px;
-}
-
-.result-group li {
-  margin-bottom: 2px;
-}
-
 /* Results header with copy button */
 .results-header {
   display: flex;
@@ -223,6 +205,7 @@ label {
   margin-bottom: var(--spacing);
 }
 
+/* Clipboard copy button */
 .icon-button {
   display: flex;
   align-items: center;
@@ -256,7 +239,7 @@ label {
   font-size: 1.1em;
 }
 
-/* Toast notification */
+/* Toast notification for clipboard feedback */
 .toast {
   position: absolute;
   top: 10px;
@@ -282,13 +265,91 @@ label {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Mobile adjustments */
+/* Framework results styling */
+.framework-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.framework-item {
+  background-color: var(--accent);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  display: inline-block;
+}
+
+.dark-theme .framework-item {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Results grouping and spacing */
+.result-group {
+  margin-bottom: 16px;
+}
+
+.result-group strong {
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.result-group ul {
+  margin-top: 4px;
+  margin-bottom: 0;
+  padding-left: 24px;
+}
+
+.result-group li {
+  margin-bottom: 2px;
+}
+
+/* Debug option styling */
+.debug-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.debug-option {
+  font-size: 0.75em;
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: rgba(var(--accent-rgb, 0, 119, 204), 0.08);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.debug-option:hover {
+  opacity: 1;
+}
+
+.dark-theme .debug-option {
+  background-color: rgba(var(--accent-rgb, 43, 144, 217), 0.12);
+}
+
+.debug-option input {
+  margin-right: 4px;
+  transform: scale(0.8);
+}
+
+.debug-option span {
+  font-size: 0.9em;
+}
+
+/* Mobile responsiveness */
 @media (max-width: 700px) {
   body, main.two-column {
     min-width: 100vw;
     max-width: 100vw;
     width: 100vw;
-    flex-direction: column;
+    flex-direction: column; /* Switch to vertical layout on mobile */
   }
   .divider {
     width: 100%;
@@ -297,7 +358,7 @@ label {
     align-self: auto;
   }
   .right-panel {
-    max-height: 200px;
+    max-height: 200px; /* Smaller results panel on mobile */
   }
   .results-header {
     flex-direction: row;
@@ -310,11 +371,21 @@ label {
   }
   
   .button-text {
-    display: none;
+    display: none; /* Hide button text on mobile, show only icon */
   }
   
   .button-icon {
     margin: 0;
+  }
+  
+  /* Adjust debug container on mobile */
+  .debug-container {
+    margin-top: 8px;
+  }
+  
+  .debug-option {
+    font-size: 0.7em;
+    padding: 1px 4px;
   }
 }
 

@@ -37,6 +37,12 @@
           </label>
         </fieldset>
         <button type="submit" id="run-btn">Run Analysis</button>
+        <div class="debug-container">
+          <label class="debug-option">
+            <input type="checkbox" name="debug-mode" />
+            <span>Enable debug logging</span>
+          </label>
+        </div>
       </form>
     </section>
     <div class="divider"></div>
@@ -52,6 +58,7 @@
       <section id="report" aria-live="polite"></section>
     </section>
   </main>
-  <script src="popup.js"></script>
+  <!-- Load using ES modules -->
+  <script type="module" src="js/popup.js"></script>
 </body>
 </html>
