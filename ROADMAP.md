@@ -18,6 +18,17 @@ This document outlines the planned improvements and future direction for the CES
 - [ ] Optimize performance for faster analysis
 - [ ] Add favicon and metadata analysis for websites
 
+### Enhanced Content Inspection
+- [ ] Implement deep content inspection of CSS files for framework signatures
+- [ ] Add ability to identify minified frameworks by examining file contents
+- [ ] Create signature database for common frameworks and their identifiers
+- [ ] Add detection of framework version numbers from file comments
+- [ ] Implement CSS preprocessor detection (SASS, LESS, etc.)
+- [ ] Parse HTML comments for framework-related information
+- [ ] Add support for downloading and analyzing remote stylesheets
+- [ ] Build pattern recognition for obfuscated framework files
+- [ ] Add support for examining imported JavaScript modules for framework clues
+
 ### Mobile Support Enhancement
 - [ ] Optimize popup interface for mobile Chrome
 - [ ] Create responsive mode for analyzing mobile-specific frameworks
@@ -25,6 +36,26 @@ This document outlines the planned improvements and future direction for the CES
 - [ ] Create compact view option for small screens
 - [ ] Add touch-friendly UI controls and gestures
 - [ ] Implement portrait/landscape optimization
+
+### Code Organization & Refactoring
+- [ ] Complete modularization of codebase into ES Modules
+- [ ] Move framework detection configurations to separate JSON files
+- [ ] Create a proper configuration management system
+- [ ] Implement dependency injection for better testability
+- [ ] Add JSDoc comments throughout the codebase
+- [ ] Create a build system with minification and bundling
+- [ ] Implement proper error boundaries and error handling
+
+### Testing Strategy
+- [ ] Set up Jest for unit testing
+- [ ] Create mock objects for Chrome API testing
+- [ ] Add snapshot tests for UI components
+- [ ] Implement integration tests using Puppeteer or Playwright
+- [ ] Create a testing harness for framework detection accuracy
+- [ ] Build a test suite with sample pages for each framework
+- [ ] Add automated tests for CSS file detection
+- [ ] Implement automated Chrome extension E2E testing
+- [ ] Set up GitHub Actions for CI/CD pipeline
 
 ### AI Integration
 - [ ] Add API key management for connecting to AI services
@@ -59,7 +90,6 @@ This document outlines the planned improvements and future direction for the CES
 
 ## Known Issues
 - [ ] Framework detection sometimes misses frameworks loaded dynamically
-- [ ] Some false positives in CSS framework detection
 - [ ] UI rendering issues at certain browser zoom levels
 - [ ] Analysis fails on sites with strict CSP headers
 - [ ] Large site analysis can cause performance issues
@@ -69,6 +99,12 @@ This document outlines the planned improvements and future direction for the CES
 - [x] Improved framework detection with confidence scoring
 - [x] Added light/dark theme toggle
 - [x] Added AI prompt export feature
+- [x] Fixed Vue.js detection false positives with more specific detection rules
+- [x] Improved Bootstrap detection with content analysis and specific component checks
+- [x] Enhanced Tailwind CSS detection with comprehensive utility pattern analysis
+- [x] Added debug mode with detailed logging of detection process
+- [x] Improved CSS file detection including commonly named files (e.g., style.min.css)
+- [x] Refactored code into ES modules for better maintainability
 
 ## How To Contribute
 If you'd like to help with any of these items, please see our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
